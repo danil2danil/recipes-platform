@@ -15,7 +15,7 @@ export const Profile = () => {
 				<div className="profile__main-info">
 					<img className='profile__avatar' src="./images/default-avatar.jpg" alt="profile-avatar" />
 					<div className="pfoile__names-box">
-						<h2 className="profile__nickname">Nickname</h2>
+						<h2 className="profile__nickname">{currentUser.email}</h2>
 						<h4 className="profile__name">Profile Name</h4>
 					</div>
 					<div className="profile__change-btn"></div>
