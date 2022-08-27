@@ -1,0 +1,19 @@
+@import '../../../vars.scss';
+
+.content {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+
+    &__header {
+        border-bottom: 1px solid gainsboro;
+        display: flex;
+        &-item {
+            padding-bottom: 5px;
+            @extend %title-font;
+            font-size: 18px;
+            color: rgb(114, 119, 148);
+            border-bottom: 2px solid $primary;
+        }
+    }
+}

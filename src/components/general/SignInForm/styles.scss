@@ -1,0 +1,15 @@
+.SignInForm {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 200px auto;
+    padding: 30px;
+    border-radius: 15px;
+    &__input {
+        margin-bottom: 15px;
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}

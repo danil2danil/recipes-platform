@@ -1,0 +1,51 @@
+@import './vars.scss';
+  
+  html{
+    box-sizing: border-box;
+  }
+  *, *:before, *::after{
+    box-sizing: inherit;
+  }
+  
+  html,
+  body,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  li,
+  button{
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    border: 0px;
+  }
+  
+  a{
+    text-decoration: none;
+    outline: none;
+    border: 0px;
+  }
+  
+  ul, 
+  ol,
+  li{
+    list-style-type: none ;
+  }
+
+body{
+  background: $body-bg;
+  @extend %default-font;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
