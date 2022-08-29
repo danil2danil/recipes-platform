@@ -1,4 +1,5 @@
 import React from 'react'
+import { LogOutButton } from '../../general/LogOutButtom'
 import "./styles.scss"
 
 export const Header = () => {
@@ -7,7 +8,7 @@ export const Header = () => {
       <div className="container">
         <div className="header__inner">
           <img className='header__logo' src="./images/logo.svg" alt="My recipes" />
-          <p>Profile-ico + poup</p>
+          <LogOutButton />
         </div>
       </div>
     </header>

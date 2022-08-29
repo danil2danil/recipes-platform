@@ -10,7 +10,7 @@ import { SignIn } from "./routes/SignIn";
 import { SignUp } from "./routes/SignUp";
 
 function App() {
-  const isUserLogIn = useCurentUser()
+  const isUser = useCurentUser()
 
   return (
     <div className="App">

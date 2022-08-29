@@ -1,11 +1,12 @@
 import React from 'react'
-import { logOut } from '../firebase/firebase'
-import { Profile } from '../components/Layout/Profile'
+import { Profile } from '../components/data components/Profile'
+import { ProfileContent } from '../components/data components/Profile Content'
 
 export const ProfilePage = () => {
   return (
     <>
       <Profile />
+      <ProfileContent />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from '../Input'
 import './styles.scss'
-import { signUp } from '../../../firebase/firebase'
+import { setProfileInfo, signUp } from '../../../firebase/firebase'
 import { useNavigate } from "react-router-dom";
 import { Button } from '../Button';
 import {Link} from 'react-router-dom'
@@ -13,6 +13,7 @@ export const SignUpForm = () => {
   const [inputValue, setInputValue] = useState({
     email: "",
     nickName: "",
+    trueName: "",
     pass: "",
     repeatPass: "",
   })
@@ -29,6 +30,7 @@ export const SignUpForm = () => {
     try{
       const res = await signUp(inputValue.email, inputValue.pass)
       console.log(res.user)
+      await setProfileInfo(res.user.uid, inputValue.nickName, inputValue.trueName)
       navigate('/profile')
     }catch(e){
       alert(e.messege)
@@ -44,13 +46,16 @@ export const SignUpForm = () => {
           <Input placeholder='Электронная почта' changebleValue='email' onChangeFunc={inputHandleChange} />
         </div>
         <div className="auth-form__input">
-          <Input placeholder='Имя профиля' changebleValue='pass' onChangeFunc={inputHandleChange} />
+          <Input placeholder='Имя профиля' changebleValue='nickName' onChangeFunc={inputHandleChange} />
+        </div>
+        <div className="auth-form__input">
+          <Input placeholder='Имя и Фамилия(необязательно)' changebleValue='trueName' onChangeFunc={inputHandleChange} />
         </div>
         <div className="auth-form__input">
           <Input placeholder='Пароль' changebleValue='pass' onChangeFunc={inputHandleChange} />
         </div>
         <div className="auth-form__input">
-          <Input placeholder='Повторите пароль' changebleValue='pass' onChangeFunc={inputHandleChange} />
+          <Input placeholder='Повторите пароль' changebleValue='repeatPass' onChangeFunc={inputHandleChange} />
         </div>
         <Link className='auth-form__link' to="/signIn">Нажмите сюда, если вы уже зарегистрированы</Link>
         <Button func={handleClick}>Создать аккаунт</Button>

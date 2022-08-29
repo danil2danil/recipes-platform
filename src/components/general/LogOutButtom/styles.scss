@@ -1,0 +1,25 @@
+@import '../../../vars.scss';
+
+.exite{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    @extend %default-font;
+    font-size: 18px;
+    font-weight: 600;
+
+    &__ico{
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+    }
+
+    &:hover{
+        background: $primary;
+    }
+}

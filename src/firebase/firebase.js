@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../redux/userSlise";
+import { setProfile } from "../redux/userSlise";
 import { useDispatch } from "react-redux";
 
 
@@ -18,6 +19,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
+const db = getFirestore(app)
+
+export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{  
+    const userRef = doc(db, 'users', userUid)
+    return setDoc(userRef, {nickname, nameAndSecondName})
+}
+
+export const getProfileInfo = async (userUid)=>{
+    const userRef = doc(db, 'users', userUid)
+    const res = await getDoc(userRef)
+    return res.data()
+}
 
 //logIn func
 export const logIn = (email, pass)=>{
@@ -31,15 +44,15 @@ export const signUp = (email, pass)=>{
 export const logOut = ()=>{
     signOut(auth)
 }
-
-//castom hooks
+//check user logIn
 export const useCurentUser = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
-        onAuthStateChanged(auth, user=>{
+        onAuthStateChanged(auth, async (user)=>{
             if (user){
-                dispatch(setUser(user.toJSON()))
+                const profileInfo = await getProfileInfo(user.uid)
+                dispatch(setProfile(profileInfo))
             }
             else{
                 navigate('signIn', {replace: true})
@@ -47,3 +60,5 @@ export const useCurentUser = ()=>{
         })
     },[auth]);  
 }
+
+

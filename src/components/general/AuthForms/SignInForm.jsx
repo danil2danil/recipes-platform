@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 
 
 
+
 export const SignInForm = () => {
   const navigate = useNavigate()
   const [inputValue, setInputValue] = useState({
@@ -25,7 +26,7 @@ export const SignInForm = () => {
 
   const handleClick = async ()=>{
     try{
-      const res = await logIn(inputValue.email, inputValue.pass)
+      await logIn(inputValue.email, inputValue.pass)
       navigate('/profile')
     }catch(e){
       alert(e.messege)
