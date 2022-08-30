@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import './firebase/firebase'
+import './firebase/firebase-auth'
 import { store } from './redux/store';
 import { Provider } from 'react-redux'
 

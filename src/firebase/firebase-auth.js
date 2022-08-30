@@ -1,11 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { getFirestore} from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setProfile } from "../redux/userSlise";
 import { useDispatch } from "react-redux";
-
+import { setProfileInfo, getProfileInfo } from "./firebase-firestore";
+import { current } from "@reduxjs/toolkit";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAoSsOqoynOGNKOIjijb5CLGB4by5fV2sg",
@@ -18,19 +19,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-const db = getFirestore(app)
-
-export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{  
-    const userRef = doc(db, 'users', userUid)
-    return setDoc(userRef, {nickname, nameAndSecondName})
-}
-
-export const getProfileInfo = async (userUid)=>{
-    const userRef = doc(db, 'users', userUid)
-    const res = await getDoc(userRef)
-    return res.data()
-}
+export const auth = getAuth(app)
+export const db = getFirestore(app)
 
 //logIn func
 export const logIn = (email, pass)=>{
@@ -49,10 +39,9 @@ export const useCurentUser = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
-        onAuthStateChanged(auth, async (user)=>{
+        onAuthStateChanged(auth, (user)=>{
             if (user){
-                const profileInfo = await getProfileInfo(user.uid)
-                dispatch(setProfile(profileInfo))
+                dispatch(setProfile(user.toJSON()))
             }
             else{
                 navigate('signIn', {replace: true})

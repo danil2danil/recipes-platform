@@ -1,7 +1,7 @@
 import React from 'react'
 import {ImExit} from 'react-icons/im'
 import './styles.scss'
-import { logOut } from '../../../firebase/firebase'
+import { logOut } from '../../../firebase/firebase-auth'
 
 export const LogOutButton = () => {
   return (

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Input } from '../Input'
 import './styles.scss'
-import { setProfileInfo, signUp } from '../../../firebase/firebase'
+import { signUp } from '../../../firebase/firebase-auth'
+import { setProfileInfo } from '../../../firebase/firebase-firestore'
 import { useNavigate } from "react-router-dom";
 import { Button } from '../Button';
 import {Link} from 'react-router-dom'
