@@ -1,12 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore} from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setProfile } from "../redux/userSlise";
 import { useDispatch } from "react-redux";
-import { setProfileInfo, getProfileInfo } from "./firebase-firestore";
-import { current } from "@reduxjs/toolkit";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAoSsOqoynOGNKOIjijb5CLGB4by5fV2sg",
@@ -15,12 +14,15 @@ const firebaseConfig = {
     storageBucket: "recipes-app-ae1aa.appspot.com",
     messagingSenderId: "361447234452",
     appId: "1:361447234452:web:3645d3546584314e88cd81",
-    measurementId: "G-G3PQEEPP4K"
+    measurementId: "G-G3PQEEPP4K",
+    storageBucket: 'gs://recipes-app-ae1aa.appspot.com/'
 };
 
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export const db = getFirestore(app)
+export const storage = getStorage(app)
+
 
 //logIn func
 export const logIn = (email, pass)=>{

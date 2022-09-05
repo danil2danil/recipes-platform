@@ -1,11 +1,13 @@
 import { db } from "./firebase-auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
+import { ref } from "firebase/storage"
+import { storage } from "./firebase-auth";
 
-
-export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{  
+export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{
+    const defaultHatRef = ref(storage, 'users-hats/default-hat-2.jpg')
+    console.log(defaultHatRef)
     const userRef = doc(db, 'users', userUid)
-    return setDoc(userRef, {nickname, nameAndSecondName})
+    return setDoc(userRef, {nickname, nameAndSecondName, hatURL: defaultHatRef.fullPath})
 }
 
 export const getProfileInfo = async (userUid)=>{
@@ -18,9 +20,3 @@ export const setProfileDescription = async (userUid, desc)=>{
     const docRef = doc(db, 'users', userUid)
     const res =  await updateDoc(docRef, {description: desc})
 } 
-
-export const getProfileDescription = async (userUid)=>{
-    const docRef = doc(db, 'users', userUid)
-    const res = (await getDoc(docRef)).data()
-    return res.description
-}

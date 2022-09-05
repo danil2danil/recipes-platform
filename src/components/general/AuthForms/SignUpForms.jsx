@@ -34,7 +34,7 @@ export const SignUpForm = () => {
       await setProfileInfo(res.user.uid, inputValue.nickName, inputValue.trueName)
       navigate('/profile')
     }catch(e){
-      alert(e.messege)
+      console.log(e)
     }
   }
 
