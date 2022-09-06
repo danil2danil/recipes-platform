@@ -20,8 +20,12 @@ export const ProfileHat = ({ profileInfo }) => {
   }, [profileInfo]);
 
   return (
-    <div className='profile__hat'>
-      <img className="profile__hat-img" src={profileHat} alt="profile-hat" /> 
+    <div className='hat'>
+      {isLoading ?
+        <p>Загрузка...</p>
+        :
+        <img className="hat__img" src={profileHat} alt="profile-hat" />
+      }
     </div>
   )
 }

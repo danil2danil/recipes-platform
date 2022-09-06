@@ -19,4 +19,9 @@ export const getProfileInfo = async (userUid)=>{
 export const setProfileDescription = async (userUid, desc)=>{
     const docRef = doc(db, 'users', userUid)
     const res =  await updateDoc(docRef, {description: desc})
-} 
+}
+
+export const setProfileHat = async (userUid, path)=>{
+    const docRef = doc(db, 'users', userUid)
+    const res =  await updateDoc(docRef, {hatURL: path})
+}

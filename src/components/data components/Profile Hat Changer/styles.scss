@@ -1,0 +1,44 @@
+@import '../../../vars.scss';
+
+.hat-changer{
+    display: none;
+}
+.hat-changer.active{
+    display: flex;
+}
+
+
+
+.hat-changer{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.438);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    &__inner{
+        padding: 15px;
+        border-radius: 15px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 400px;
+    }
+
+    &__input{
+        margin-bottom: 40px;
+    }
+    &__close-btn{
+        cursor: pointer;
+        background: none;
+        margin-left: 10px;
+        color: $navigation-clolor;
+        @extend %title-font;
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+

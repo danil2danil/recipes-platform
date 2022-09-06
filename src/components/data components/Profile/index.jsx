@@ -3,32 +3,37 @@ import { useSelector } from 'react-redux'
 import { GoPencil } from 'react-icons/go'
 import './styles.scss'
 import { ChangeDescription } from '../Profile Description Changer'
-import { getProfileDescription, getProfileInfo } from '../../../firebase/firebase-firestore'
-import { getAuth } from 'firebase/auth'
 import { ProfileHat } from '../Profile Hat'
+import { useFetchProfileInfo } from './useFetchProfileInfo'
+import { ProfileHatChanger } from '../Profile Hat Changer'
 
 export const Profile = () => {
 	const currentUser = useSelector(state => state.user.user)
 	const [isChangeDescription, setIsChangeDescription] = useState(false)
-	const [profileInf, setProfileInf] = useState("")
+	const [isChangeHat, setIsChangeHat] = useState(false)
+
+	const profileInf = useFetchProfileInfo(currentUser.uid, isChangeDescription)
 
 	const togleCangeDescription = () => {
 		setIsChangeDescription(!isChangeDescription)
 	}
 
-	const fetchProfileInfo = async () => {
-		const res = await getProfileInfo(currentUser.uid)
-		setProfileInf(res)
+	const togleChangeHat = ()=>{
+		setIsChangeHat(!isChangeHat)
 	}
-
-	useEffect(() => {
-		fetchProfileInfo()
-	}, [currentUser, isChangeDescription]);
 
 	return (
 		<>
 			<div className="profile">
-				<ProfileHat profileInfo={profileInf}/>
+      <ProfileHatChanger isActive={isChangeHat} saveFunc={togleChangeHat} />
+        <div className="profile__hat">
+  				<ProfileHat profileInfo={profileInf} />
+          <button className="profile__hat-hover" onClick={togleChangeHat}>
+            <p className="profile__hat-hover-txt">
+              Изменить фото
+            </p>
+          </button>
+        </div>
 				<div className="profile__inner">
 					<div className="profile__main-info">
 						<img className='profile__avatar' src="./images/default-avatar.jpg" alt="profile-avatar" />
@@ -36,7 +41,6 @@ export const Profile = () => {
 							<h2 className="profile__nickname">{profileInf.nickname}</h2>
 							<h4 className="profile__name">{profileInf.nameAndSecondName}</h4>
 						</div>
-						<div className="profile__change-btn"></div>
 					</div>
 					{isChangeDescription ?
 						<ChangeDescription saveFunc={togleCangeDescription} user={currentUser.uid} />
