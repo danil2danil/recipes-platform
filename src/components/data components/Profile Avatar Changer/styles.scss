@@ -1,54 +1,48 @@
 @import '../../../vars.scss';
 
-.hat-changer{
+.avatar-changer{
     display: none;
-}
-.hat-changer.active{
-    display: flex;
-}
-
-.hat-changer{
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.438);
-    z-index: 100;
     justify-content: center;
     align-items: center;
+    background: rgba(0, 0, 0, 0.438);
+    z-index: 100;
     &__inner{
-        padding: 15px;
-        border-radius: 15px;
+        flex-basis: 450px;
         background: white;
-        display: flex;
-        flex-direction: column;
-        flex-basis: 700px;
-    }
-
-    &__file-input{
-        height: 250px;
-        border: 3px dashed $secondary;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-size: 16px;
-        color: $fade-black;
-        position: relative;
-    }
-
-    &__prev{
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        border-radius: 10px;
+        padding: 15px;
     }
 
     &__input{
-        display: none;
+        padding: 10px;
+        height: 200px;
+        border: 3px dashed $secondary;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__prev{
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin: 0 auto;
+        overflow: hidden ;
+    }
+
+    &__prev-img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-right: 20px;
     }
 
     &__close-btn{
@@ -60,7 +54,9 @@
         font-size: 14px;
         font-weight: 500;
     }
+
 }
 
-
-
+.avatar-changer.active{
+    display: flex;
+}

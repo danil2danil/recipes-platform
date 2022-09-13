@@ -43,7 +43,9 @@ export const useCurentUser = ()=>{
     useEffect(() => {
         onAuthStateChanged(auth, (user)=>{
             if (user){
+                console.log("start login")
                 dispatch(setProfile(user.toJSON()))
+                console.log("end login")
             }
             else{
                 navigate('signIn', {replace: true})

@@ -1,0 +1,22 @@
+.description {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-basis: 300px;
+    margin-bottom: 20px;
+
+    &__text {
+        font-size: 16px;
+        margin-right: 5px;
+        white-space: pre-wrap;
+        position: relative;
+    }
+
+    &__ico {
+        position: absolute;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+}

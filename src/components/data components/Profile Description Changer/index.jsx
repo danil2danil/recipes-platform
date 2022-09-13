@@ -6,8 +6,8 @@ import './styles.scss'
 import { useSelector } from 'react-redux'
 
 
-export const ChangeDescription = ({saveFunc}) => {
-    const [inputValue, setInputValue] = useState("")
+export const ChangeDescription = ({saveFunc, currentDescription}) => {
+    const [inputValue, setInputValue] = useState()
     const currentUser = useSelector(state=>state.user.user)
 
     const handleChange = (e)=>{
@@ -18,6 +18,10 @@ export const ChangeDescription = ({saveFunc}) => {
         await setProfileDescription(currentUser.uid, inputValue)
         saveFunc()
     }
+
+    useEffect(() => {
+      setInputValue(currentDescription)
+    }, []);
 
   return (
     <div className='description'>

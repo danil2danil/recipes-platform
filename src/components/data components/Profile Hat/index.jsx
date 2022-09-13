@@ -3,7 +3,7 @@ import './styles.scss'
 import { getDownloadURL, getBytes, ref } from 'firebase/storage'
 import { storage } from '../../../firebase/firebase-auth'
 
-export const ProfileHat = ({ profileInfo }) => {
+export const ProfileHat = ({ isHatChanged, profileInfo}) => {
   const [profileHat, setProfileHat] = useState("")
   const [isLoading, setIsLoading] = useState(true)
 
@@ -17,7 +17,7 @@ export const ProfileHat = ({ profileInfo }) => {
 
   useEffect(() => {
     fetchProfileHat()
-  }, [profileInfo]);
+  }, [profileInfo, isHatChanged]);
 
   return (
     <div className='hat'>

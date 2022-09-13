@@ -13,6 +13,7 @@ export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{
 export const getProfileInfo = async (userUid)=>{
     const userRef = doc(db, 'users', userUid)
     const res = await getDoc(userRef)
+    console.log(res)
     return res.data()
 }
 
@@ -25,3 +26,9 @@ export const setProfileHat = async (userUid, path)=>{
     const docRef = doc(db, 'users', userUid)
     const res =  await updateDoc(docRef, {hatURL: path})
 }
+
+export const setProfileAvatar = async (userUid, path)=>{
+    const docRef = doc(db, 'users', userUid)
+    await updateDoc(docRef, {avatarUrl: path})
+}
+
