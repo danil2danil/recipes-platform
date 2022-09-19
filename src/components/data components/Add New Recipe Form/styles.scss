@@ -1,0 +1,26 @@
+@import '../../../vars.scss';
+
+
+.recipe-form{
+
+    &__title{
+        @extend %title-font;
+        font-size: 38px;
+        color: $title-2;
+    }
+
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info{
+        flex-basis: 480px;
+    }
+
+    &__avatar{
+        display: block;
+        width: 450px;
+        object-fit: contain;
+    }
+}

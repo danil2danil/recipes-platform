@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import './styles.scss'
 
 export const Input = ({onChangeFunc, placeholder, changebleValue}) => {

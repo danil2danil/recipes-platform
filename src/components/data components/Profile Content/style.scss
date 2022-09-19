@@ -7,6 +7,7 @@
 
     &__header {
         border-bottom: 1px solid gainsboro;
+        margin-bottom: 10px;
         display: flex;
         &-item {
             padding-bottom: 5px;
@@ -14,6 +15,28 @@
             font-size: 18px;
             color: rgb(114, 119, 148);
             border-bottom: 2px solid $primary;
+        }
+    }
+
+    &__button{
+        display: flex;
+        align-items: center;
+        background: $secondary;
+        padding: 7px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background: $secondary-hover;
+        }
+        &-txt{
+            @extend %title-font;
+            font-size: 15px;
+            color: $title-2;
+        }
+        &-ico{
+            font-size: 20px;
+            color: black;
+            margin-right: 5px;
         }
     }
 }

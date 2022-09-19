@@ -11,20 +11,22 @@ export const ProfileHat = ({ isHatChanged, profileInfo}) => {
     setIsLoading(true)
     const hatRef = ref(storage, profileInfo.hatURL)
     const res = await getDownloadURL(hatRef)
-    setProfileHat(res)
+    if (res){
+      setProfileHat(res)
+    }
     setIsLoading(false)
   }
 
   useEffect(() => {
     fetchProfileHat()
-  }, [profileInfo, isHatChanged]);
+  }, [isHatChanged]);
 
   return (
     <div className='hat'>
       {isLoading ?
         <p>Загрузка...</p>
         :
-        <img className="hat__img" src={profileHat} alt="profile-hat" />
+        <img className="hat__img" src={profileHat==="" ? './images/default-hat-2.jpg' : profileHat} alt="profile-hat" />
       }
     </div>
   )

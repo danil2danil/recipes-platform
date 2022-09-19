@@ -4,10 +4,8 @@ import { ref } from "firebase/storage"
 import { storage } from "./firebase-auth";
 
 export const setProfileInfo = (userUid, nickname, nameAndSecondName)=>{
-    const defaultHatRef = ref(storage, 'users-hats/default-hat-2.jpg')
-    console.log(defaultHatRef)
     const userRef = doc(db, 'users', userUid)
-    return setDoc(userRef, {nickname, nameAndSecondName, hatURL: defaultHatRef.fullPath})
+    return setDoc(userRef, {nickname, nameAndSecondName, hatURL: "", avatarUrl: ""})
 }
 
 export const getProfileInfo = async (userUid)=>{

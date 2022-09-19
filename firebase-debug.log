@@ -1,0 +1,21 @@
+[debug] [2022-09-19T08:51:37.663Z] ----------------------------------------------------------------------
+[debug] [2022-09-19T08:51:37.665Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\danil\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-09-19T08:51:37.666Z] CLI Version:   11.9.0
+[debug] [2022-09-19T08:51:37.666Z] Platform:      win32
+[debug] [2022-09-19T08:51:37.666Z] Node Version:  v16.15.1
+[debug] [2022-09-19T08:51:37.667Z] Time:          Mon Sep 19 2022 11:51:37 GMT+0300 (Москва, стандартное время)
+[debug] [2022-09-19T08:51:37.668Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-19T08:51:37.676Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-19T08:51:37.677Z] > authorizing via signed-in user (danilborunov26@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\recipes-platform-app
+

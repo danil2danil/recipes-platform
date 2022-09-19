@@ -16,7 +16,6 @@ export const SignUpForm = () => {
     nickName: "",
     trueName: "",
     pass: "",
-    repeatPass: "",
   })
 
   const inputHandleChange = (changebleValue, newValue) => {
@@ -54,9 +53,6 @@ export const SignUpForm = () => {
         </div>
         <div className="auth-form__input">
           <Input placeholder='Пароль' changebleValue='pass' onChangeFunc={inputHandleChange} />
-        </div>
-        <div className="auth-form__input">
-          <Input placeholder='Повторите пароль' changebleValue='repeatPass' onChangeFunc={inputHandleChange} />
         </div>
         <Link className='auth-form__link' to="/signIn">Нажмите сюда, если вы уже зарегистрированы</Link>
         <Button func={handleClick}>Создать аккаунт</Button>
